@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Space Typist: Supabase Protocol</title>
+    <title>Space Typist: Red Protocol</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
@@ -109,16 +109,16 @@
 </head>
 <body>
 
-    <!-- Login Screen -->
+    <!-- หน้าแรก: เข้าสู่ระบบ -->
     <div id="login-screen" class="overlay">
         <div class="text-center p-8 max-w-lg w-full border border-slate-800 bg-slate-900/40 rounded-lg">
             <h1 class="text-6xl font-black mb-2 text-white italic tracking-tighter" style="text-shadow: 3px 3px #ef4444, -3px -3px #3b82f6;">SPACE TYPIST</h1>
-            <p class="text-red-500 font-bold mb-8 uppercase tracking-[0.4em] text-[10px]">SUPABASE CLOUD PROTOCOL ACTIVATED</p>
+            <p class="text-red-500 font-bold mb-8 uppercase tracking-[0.4em] text-[10px]">ระบบป้องกันภัยระดับสูงสุด: พิพากษาด้วยปลายนิ้ว</p>
             
             <div id="initial-leaderboard" class="mb-8 bg-black/40 border border-slate-800 p-5 rounded-sm hidden">
-                <h3 class="text-xs font-bold text-blue-400 mb-4 uppercase tracking-widest border-b border-blue-900/20 pb-2">ทำเนียบนักบินเกียรติยศ (Cloud)</h3>
+                <h3 class="text-xs font-bold text-blue-400 mb-4 uppercase tracking-widest border-b border-blue-900/20 pb-2">ทำเนียบนักบินเกียรติยศ</h3>
                 <div id="initial-lb-list" class="space-y-2 text-sm font-mono text-slate-300 text-left">
-                    <p class="animate-pulse text-center">กำลังเชื่อมต่อฐานข้อมูล...</p>
+                    <p class="animate-pulse text-center">กำลังดึงข้อมูลระบบ...</p>
                 </div>
             </div>
 
@@ -127,33 +127,55 @@
                     class="w-full p-4 mb-4 bg-slate-900 border border-slate-700 text-white text-center focus:border-red-500 outline-none transition-all font-sans uppercase">
                 <button onclick="startGame()" class="cyber-btn w-full">เริ่มทำภารกิจ</button>
             </div>
-            <div id="loading-assets" class="hidden py-4 text-xs text-red-500 animate-pulse">โหลดคลังข้อมูลอาวุธจากดาวเทียม...</div>
+            <div id="loading-assets" class="hidden py-4 text-xs text-red-500 animate-pulse">ตรวจสอบคำสั่งภารกิจ...</div>
         </div>
     </div>
 
-    <!-- Tutorial -->
+    <!-- หน้าอธิบายวิธีการเล่น -->
     <div id="tutorial-screen" class="overlay hidden">
         <div class="cyber-card !bg-slate-950 p-8 max-w-2xl border-2 border-slate-800">
             <h2 class="text-2xl font-black mb-4 text-red-500 uppercase italic flex items-center gap-2">
-                <span class="w-2 h-8 bg-red-600"></span> คู่มือการปฏิบัติการ (SUPABASE)
+                <span class="w-2 h-8 bg-red-600"></span> คู่มือการปฏิบัติการ (MANUAL)
             </h2>
             <div class="text-left space-y-4 text-slate-300 mb-8 text-sm">
                 <div class="bg-slate-900/50 p-4 border-l-4 border-blue-500 rounded-r">
                     <h4 class="text-blue-400 font-bold mb-1">🎯 เป้าหมายสูงสุด</h4>
-                    <p>ทำคะแนนให้ถึง <span class="text-white font-bold underline">10,000 แต้ม</span> เพื่อบันทึกลงฐานข้อมูล!</p>
+                    <p>ทำคะแนนให้ถึง <span class="text-white font-bold underline">10,000 แต้ม</span> เพื่อสำเร็จภารกิจและรับเหรียญกล้าหาญ!</p>
                 </div>
+
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-red-900/10 p-3 border border-red-900/30 rounded">
                         <h4 class="text-red-500 font-bold mb-1">⌨️ การควบคุม</h4>
                         <ul class="list-disc list-inside space-y-1 text-[13px]">
-                            <li><span class="text-white">A-Z:</span> พิมพ์เพื่อยิง</li>
+                            <li><span class="text-white">ตัวอักษร A-Z:</span> เพื่อพิมพ์คำ</li>
                             <li><span class="text-orange-500">ENTER:</span> ล้างคำ</li>
-                            <li><span class="text-yellow-400">SPACE:</span> ยิงอุกกาบาตพิเศษ</li>
+                            <li><span class="text-yellow-400">SPACEBAR:</span> ยิงอุกกาบาตพิเศษ</li>
                         </ul>
                     </div>
                     <div class="bg-slate-900/50 p-3 border border-slate-800 rounded">
-                        <h4 class="text-slate-400 font-bold mb-1">☁️ ระบบ Cloud</h4>
-                        <p class="text-[12px]">สถิติของคุณจะถูกซิงค์กับ Supabase ทันทีที่จบการต่อสู้</p>
+                        <h4 class="text-slate-400 font-bold mb-1">🚀 ระบบยาน</h4>
+                        <p class="text-[12px]">พิกัดการยิงจะเปลี่ยนตามตำแหน่งยาน รักษาจังหวะให้ดี</p>
+                    </div>
+                </div>
+
+                <div class="border-t border-slate-800 pt-4">
+                    <h4 class="text-amber-500 font-bold mb-2 text-center uppercase tracking-tighter">📦 อุกกาบาตพิเศษ</h4>
+                    <div class="grid grid-cols-3 gap-3">
+                        <div class="text-center p-3 bg-slate-900 rounded border border-green-500/50">
+                            <span class="text-3xl block mb-2">🛠️</span>
+                            <p class="text-[11px] text-white font-bold">REPAIR</p>
+                            <p class="text-[9px] text-green-500">ซ่อม HP +25%</p>
+                        </div>
+                        <div class="text-center p-3 bg-slate-900 rounded border border-yellow-500/50">
+                            <span class="text-3xl block mb-2">💎</span>
+                            <p class="text-[11px] text-white font-bold">COMBO</p>
+                            <p class="text-[9px] text-slate-500">Slow 20 วิ + Shield 30 วิ</p>
+                        </div>
+                        <div class="text-center p-3 bg-slate-900 rounded border border-red-500/50">
+                            <span class="text-3xl block mb-2">🔥</span>
+                            <p class="text-[11px] text-white font-bold">BONUS</p>
+                            <p class="text-[9px] text-slate-500">คะแนน x2 นาน 15 วินาที</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -166,7 +188,7 @@
         <div class="flex flex-col gap-2">
             <div class="cyber-card">
                 <div class="flex justify-between items-center mb-1">
-                    <span class="text-[9px] text-red-500 font-bold uppercase">HP ยาน</span>
+                    <span class="text-[9px] text-red-500 font-bold uppercase">สถานะโครงสร้างยาน</span>
                     <span id="hp-percent" class="text-[9px] font-mono text-blue-400">100%</span>
                 </div>
                 <div class="hp-bar-bg"><div id="hp-fill"></div></div>
@@ -176,17 +198,23 @@
                 <div id="buff-slow" class="buff-badge bg-yellow-500 text-black">⚡ SLOW (<span id="buff-slow-time">0</span>s)</div>
                 <div id="buff-shield" class="buff-badge bg-blue-500 text-white">🛡️ SHIELD (<span id="buff-shield-time">0</span>s)</div>
             </div>
+            <button onclick="toggleMusic()" class="cyber-card !py-1 text-xs opacity-50 hover:opacity-100 border-slate-700">
+                <span id="music-icon">🔊 เปิดเสียง</span>
+            </button>
         </div>
+        
         <div class="flex gap-3">
             <div class="cyber-card text-right">
-                <span class="text-slate-400 text-[9px] font-bold uppercase">SCORE</span>
-                <div class="flex items-baseline gap-1">
-                    <span id="score-val" class="text-xl font-black font-mono text-white">0</span>
-                    <span class="text-[10px] text-slate-500">/ 10,000</span>
+                <div class="flex flex-col">
+                    <span class="text-slate-400 text-[9px] font-bold uppercase">คะแนนปัจจุบัน</span>
+                    <div class="flex items-baseline gap-1">
+                        <span id="score-val" class="text-xl font-black font-mono text-white">0</span>
+                        <span class="text-[10px] text-slate-500">/ 10,000</span>
+                    </div>
                 </div>
             </div>
             <div class="cyber-card text-right border-l-2 border-blue-500">
-                <span class="text-blue-500 text-[9px] font-bold uppercase block">TIME</span>
+                <span class="text-blue-500 text-[9px] font-bold uppercase block">เวลาที่เหลือ</span>
                 <span id="timer-val" class="text-xl font-black font-mono text-blue-400">02:00</span>
             </div>
         </div>
@@ -194,45 +222,55 @@
 
     <canvas id="gameCanvas"></canvas>
 
-    <!-- Game Over -->
+    <!-- หน้าจบเกม -->
     <div id="game-over" class="overlay hidden">
         <div class="cyber-card p-10 w-[460px] bg-black border-2 border-red-600 text-center relative overflow-hidden">
-            <div id="win-medal-container" class="hidden mb-4"><div class="text-6xl medal-float">🎖️</div></div>
-            <h1 id="over-title" class="text-4xl font-black text-red-600 mb-2 italic uppercase">MISSION END</h1>
-            <div class="mb-8 bg-slate-900/50 py-4 rounded border border-slate-800">
-                <span class="text-slate-500 text-xs uppercase tracking-widest">คะแนนที่ทำได้</span>
+            <!-- Win Medal Icon -->
+            <div id="win-medal-container" class="hidden mb-4">
+                <div class="text-6xl medal-float">🎖️</div>
+                <h2 class="text-yellow-400 font-black text-xl mt-2 uppercase">เหรียญกล้าหาญชั้นสูงสุด</h2>
+            </div>
+
+            <h1 id="over-title" class="text-4xl font-black text-red-600 mb-2 italic uppercase">ระบบล่มสลาย</h1>
+            <p id="over-subtitle" class="text-slate-400 text-[10px] mb-6 uppercase tracking-widest">การปฏิบัติภารกิจสิ้นสุดลง</p>
+
+            <div class="mb-8 bg-slate-900/50 py-4 rounded border border-slate-800 relative">
+                <span class="text-slate-500 text-xs uppercase tracking-widest">คะแนนรวมทั้งหมด</span>
                 <p id="final-score" class="text-6xl font-black text-white font-mono">0</p>
             </div>
+
             <div id="leaderboard-section" class="bg-slate-900/30 p-4 mb-6 rounded text-left border border-slate-800">
-                <p class="text-[10px] text-blue-400 font-bold mb-3 uppercase">TOP PILOTS (SUPABASE)</p>
+                <p class="text-[10px] text-blue-400 font-bold mb-3 uppercase flex justify-between">
+                    <span>ทำเนียบนักบินเกียรติยศ</span>
+                    <span>ยศและเหรียญ</span>
+                </p>
                 <div id="leaderboard-body" class="space-y-2 max-h-[160px] overflow-y-auto font-mono text-[11px]"></div>
             </div>
-            <button onclick="restartGame()" class="cyber-btn w-full">REBOOT SYSTEM</button>
+            
+            <button onclick="restartGame()" class="cyber-btn w-full !border-blue-600 !text-blue-500 hover:!bg-blue-600">เริ่มระบบใหม่</button>
         </div>
     </div>
 
     <input type="text" id="keyboard-handler" class="input-hidden" autocomplete="off">
 
     <script>
-        // Supabase Configuration อัปเดตข้อมูลเชื่อมต่อแล้ว
-        const SUPABASE_URL = "https://wmskiipsbswopcntzyrf.supabase.co"; 
-        const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indtc2tpaXBzYnN3b3BjbnR6eXJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg4MDEzNTIsImV4cCI6MjA4NDM3NzM1Mn0.m5jV1GU1Kyzu2i7DCdrsK50CEJ5fAcpZccPEptCqW_o"; 
-        const HEADERS = {
-            "apikey": SUPABASE_KEY,
-            "Authorization": `Bearer ${SUPABASE_KEY}`,
-            "Content-Type": "application/json",
-            "Prefer": "return=representation"
-        };
-
+        // Supabase Configuration
+        const SUPABASE_URL = "https://wmskiipsbswopcntzyrf.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Indtc2tpaXBzYnN3b3BjbnR6eXJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njg4MDEzNTIsImV4cCI6MjA4NDM3NzM1Mn0.m5jV1GU1Kyzu2i7DCdrsK50CEJ5fAcpZccPEptCqW_o";
+        
         const canvas = document.getElementById('gameCanvas');
         const ctx = canvas.getContext('2d');
         const kbHandler = document.getElementById('keyboard-handler');
+        const bgMusic = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3'); 
+        bgMusic.loop = true; bgMusic.volume = 0.2;
+        let isMusicPlaying = false;
 
         const config = {
-            width: 900, height: 650, baseSpeed: 0.8, bonusSlowFactor: 0.4, 
-            spawnRate: 1500, winScore: 10000,
-            defaultWords: ["SUPABASE", "CLOUD", "SQL", "DATABASE", "FIRE", "GRID", "VOID", "CYBER"],
-            meteorColors: ["#ef4444", "#dc2626", "#3b82f6", "#60a5fa", "#f97316"] 
+            width: 900, height: 650, baseSpeed: 0.8, 
+            bonusSlowFactor: 0.4, spawnRate: 1500, shipAmplitude: 280,
+            winScore: 10000, // ปรับลดจาก 20000 เป็น 10000
+            defaultWords: ["RED", "FIRE", "CORE", "BURN", "DOOM", "VOID", "GRID", "NODE", "KILL", "SYNC", "BLUE", "CYAN", "METAL", "IRON", "WAR", "DATA"],
+            meteorColors: ["#ef4444", "#dc2626", "#3b82f6", "#60a5fa", "#94a3b8", "#f97316"] 
         };
 
         let state = {
@@ -245,29 +283,26 @@
             gameActive: false, laser: null, screenShake: 0, timerInterval: null
         };
 
-        // Utility: Fetch with exponential backoff
-        async function fetchWithRetry(url, options = {}, retries = 5) {
-            let delay = 1000;
-            for (let i = 0; i < retries; i++) {
-                try {
-                    const response = await fetch(url, options);
-                    if (response.ok) return response;
-                } catch (e) {}
-                if (i < retries - 1) {
-                    await new Promise(resolve => setTimeout(resolve, delay));
-                    delay *= 2;
-                }
-            }
-            return null;
+        const ranks = [
+            { medal: "🥇", title: "ผู้พัน" },
+            { medal: "🥈", title: "ผู้กอง" },
+            { medal: "🥉", title: "ผู้หมวด" },
+            { medal: "", title: "นักบินฝึกหัด" }
+        ];
+
+        function getRankInfo(index) {
+            return ranks[index] || ranks[3];
         }
 
         async function init() {
             canvas.width = config.width; canvas.height = config.height;
             for(let i=0; i<150; i++) {
                 state.stars.push({ 
-                    x: Math.random()*config.width, y: Math.random()*config.height, 
-                    s: Math.random()*1.8, v: Math.random()*0.5 + 0.1, 
-                    c: Math.random() > 0.7 ? '#ef4444' : '#475569' 
+                    x: Math.random()*config.width, 
+                    y: Math.random()*config.height, 
+                    s: Math.random()*1.8, 
+                    v: Math.random()*0.5 + 0.1, 
+                    c: Math.random() > 0.7 ? (Math.random() > 0.5 ? '#ef4444' : '#60a5fa') : '#475569' 
                 });
             }
             
@@ -280,8 +315,11 @@
             window.addEventListener('keydown', (e) => { 
                 if(!state.gameActive) return;
                 kbHandler.focus(); 
-                if(e.code === 'Enter') { state.currentInput = ""; kbHandler.value = ""; }
-                else if(e.code === 'Space') { e.preventDefault(); hitSpecial(); }
+                if(e.code === 'Enter') {
+                    state.currentInput = ""; kbHandler.value = "";
+                } else if(e.code === 'Space') {
+                    e.preventDefault(); hitSpecial();
+                }
             });
             
             loadInitialLeaderboard();
@@ -290,36 +328,61 @@
 
         async function loadInitialLeaderboard() {
             try {
-                // Fetch top 5 from 'leaderboard' table
-                const res = await fetchWithRetry(`${SUPABASE_URL}/rest/v1/leaderboard?select=*&order=score.desc&limit=5`, { headers: HEADERS });
-                if (!res) throw new Error();
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/scores?select=username,score&order=score.desc&limit=5`, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                });
                 const data = await res.json();
                 const lbList = document.getElementById('initial-lb-list');
                 document.getElementById('initial-leaderboard').classList.remove('hidden');
                 
                 if (data && data.length > 0) {
-                    lbList.innerHTML = data.map((entry, i) => `
-                        <div class="flex justify-between items-center py-1 border-b border-slate-800/50">
-                            <span class="opacity-90 font-bold">${i+1}. ${entry.username}</span>
+                    lbList.innerHTML = data.slice(0, 5).map((entry, i) => {
+                        const info = getRankInfo(i);
+                        return `<div class="flex justify-between items-center py-1 border-b border-slate-800/50">
+                            <span class="opacity-90 font-bold">${i+1}. ${info.medal} ${info.title} ${entry.username}</span>
                             <span class="text-blue-400 font-bold">${entry.score.toLocaleString()}</span>
-                        </div>
-                    `).join('');
+                        </div>`;
+                    }).join('');
                 } else {
-                    lbList.innerHTML = "<p class='text-center'>ยังไม่มีสถิติในระบบ</p>";
+                    lbList.innerHTML = "<p class='text-center'>ไม่พบข้อมูลนักบิน</p>";
                 }
             } catch(e) { 
-                document.getElementById('initial-lb-list').innerHTML = "<p class='text-center text-red-500'>เชื่อมต่อ Cloud ล้มเหลว</p>";
+                console.error('Error loading leaderboard:', e);
+                document.getElementById('initial-lb-list').innerHTML = "<p class='text-center'>การเชื่อมต่อขัดข้อง</p>";
             }
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) { bgMusic.pause(); document.getElementById('music-icon').innerText = '🔇 ปิดเสียง'; }
+            else { bgMusic.play().catch(()=>{}); document.getElementById('music-icon').innerText = '🔊 เปิดเสียง'; }
+            isMusicPlaying = !isMusicPlaying;
         }
 
         async function fetchGameData() {
             try {
-                // Fetch words from 'words' table
-                const res = await fetchWithRetry(`${SUPABASE_URL}/rest/v1/words?select=word`, { headers: HEADERS });
-                if (!res) throw new Error();
-                const data = await res.json();
-                state.fetchedWords = data.length > 0 ? data.map(item => item.word.toUpperCase()) : config.defaultWords;
-            } catch(e) { state.fetchedWords = config.defaultWords; }
+                // Try to fetch words from Supabase (if you have a 'words' table)
+                // Otherwise, use default words
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/words?select=word`, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    state.fetchedWords = (Array.isArray(data) && data.length > 0) 
+                        ? data.map(w => String(w.word || w).toUpperCase().trim()).filter(w => w.length > 0)
+                        : config.defaultWords;
+                } else {
+                    state.fetchedWords = config.defaultWords;
+                }
+            } catch(e) { 
+                console.log('Using default words');
+                state.fetchedWords = config.defaultWords; 
+            }
         }
 
         async function startGame() {
@@ -342,7 +405,7 @@
                 if(state.gameActive) { 
                     state.timeLeft--; 
                     updateHUD(); 
-                    if(state.timeLeft<=0) endGame("TIME OUT", "หมดเวลาปฏิบัติการ"); 
+                    if(state.timeLeft<=0) endGame("หมดเวลาปฏิบัติการ", "ภารกิจยุติเนื่องจากหมดเวลา"); 
                 } 
             }, 1000);
             gameLoop();
@@ -353,21 +416,29 @@
             const idx = state.words.findIndex(w => w.text === input);
             if(idx !== -1) {
                 const w = state.words[idx];
-                state.laser = { x1: state.shipX, y1: config.height - 65, x2: w.x, y2: w.y, a: 1, c: '#ef4444' };
-                state.score += (w.text.length * 20) * (state.scoreMultiplierTimeLeft > 0 ? 2 : 1);
+                state.laser = { x1: state.shipX, y1: config.height - 65, x2: w.x, y2: w.y, a: 1, c: w.color.includes('3b82f6') ? '#60a5fa' : '#ef4444' };
+                
+                let multiplier = state.scoreMultiplierTimeLeft > 0 ? 2 : 1;
+                state.score += (w.text.length * 20) * multiplier;
+                
                 explode(w.x, w.y, w.color);
                 state.words.splice(idx, 1);
                 state.currentInput = ""; kbHandler.value = "";
                 updateHUD();
-                if(state.score >= config.winScore) endGame("MISSION CLEAR", "คุณพิชิตภารกิจสำเร็จ!");
+
+                if(state.score >= config.winScore) {
+                    endGame("ภารกิจเสร็จสิ้น", "ยินดีด้วยกับผู้ชนะ! คุณคือตำนานแห่งห้วงอวกาศ");
+                }
             }
         }
 
         function spawn() {
-            const txt = state.fetchedWords[Math.floor(Math.random()*state.fetchedWords.length)];
+            const list = state.fetchedWords.length > 0 ? state.fetchedWords : config.defaultWords;
+            const txt = list[Math.floor(Math.random()*list.length)];
+            const color = config.meteorColors[Math.floor(Math.random()*config.meteorColors.length)];
             state.words.push({
-                text: txt, x: Math.random()*(config.width-200)+100, y: -40, speed: config.baseSpeed + (state.score/50000),
-                color: config.meteorColors[Math.floor(Math.random()*config.meteorColors.length)], rotation: 0, rotSpeed: (Math.random()-0.5)*0.05, size: 30 + Math.random()*15 
+                text: txt, x: Math.random()*(config.width-200)+100, y: -40, speed: config.baseSpeed + (state.score/80000),
+                color: color, rotation: 0, rotSpeed: (Math.random()-0.5)*0.05, size: 30 + Math.random()*15 
             });
         }
 
@@ -390,31 +461,70 @@
             if(!state.gameActive) return;
             const now = Date.now();
             state.shipPhase += 0.015;
-            state.shipX = (config.width/2) + Math.sin(state.shipPhase) * 280;
+            state.shipX = (config.width/2) + Math.sin(state.shipPhase) * config.shipAmplitude;
 
             if(now - state.lastSpawn > (state.bonusTimeLeft > 0 ? 1100 : config.spawnRate)) { spawn(); state.lastSpawn = now; }
 
             if(!state.specialMeteor && (now - state.lastSpecialSpawn > 12000)) {
                 const types = ['heal', 'combo', 'bonus'];
                 const type = types[Math.floor(Math.random()*types.length)];
-                state.specialMeteor = { x: Math.random()*(config.width-200)+100, y: -60, hp: 60, s: 0.5, size: 70, type: type, color: '#fbbf24' };
+                let color = '#f97316';
+                if(type === 'combo') color = '#fbbf24'; // Yellow
+                if(type === 'bonus') color = '#ef4444'; // Red
+                if(type === 'heal') color = '#22c55e'; // Green
+                state.specialMeteor = { x: Math.random()*(config.width-200)+100, y: -60, hp: 60, s: 0.5, size: 70, type: type, color: color };
             }
 
             const smult = state.bonusTimeLeft > 0 ? config.bonusSlowFactor : 1;
             state.words.forEach((w, i) => {
-                w.y += w.speed * smult;
+                w.y += w.speed * smult; w.rotation += w.rotSpeed * smult;
                 if(Math.hypot(w.x - state.shipX, w.y - (config.height - 60)) < 55) {
-                    if (state.shieldTimeLeft <= 0) state.hp -= 15;
-                    state.screenShake = 10; explode(w.x, w.y, w.color); state.words.splice(i, 1);
+                    if (state.shieldTimeLeft > 0) { 
+                        state.screenShake = 6;
+                    } else { 
+                        state.hp -= 15; 
+                        state.screenShake = 15; 
+                    }
+                    explode(w.x, w.y, w.color); 
+                    state.words.splice(i, 1); 
                     updateHUD();
-                    if(state.hp <= 0) endGame("SYSTEM CRITICAL", "ยานถูกทำลาย");
+                    if(state.hp <= 0) endGame("ระบบล่มสลาย", "ตัวยานได้รับความเสียหายจนเกินขีดจำกัด");
                 }
+                if(w.y > config.height + 50) state.words.splice(i, 1);
             });
+
+            if(state.specialMeteor) {
+                state.specialMeteor.y += state.specialMeteor.s * smult;
+                if(state.specialMeteor.y > config.height + 60) state.specialMeteor = null;
+            }
 
             if(state.bonusTimeLeft > 0) state.bonusTimeLeft -= 0.016;
             if(state.shieldTimeLeft > 0) state.shieldTimeLeft -= 0.016;
             if(state.scoreMultiplierTimeLeft > 0) state.scoreMultiplierTimeLeft -= 0.016;
+
+            state.stars.forEach(s => { s.y += s.v; if(s.y > config.height) s.y = 0; });
+            state.particles.forEach((p, i) => { p.x += p.vx; p.y += p.vy; p.l -= 0.02; if(p.l <= 0) state.particles.splice(i, 1); });
+            if(state.laser) { state.laser.a -= 0.15; if(state.laser.a <= 0) state.laser = null; }
             if(state.screenShake > 0) state.screenShake *= 0.9;
+            updateBuffUI();
+        }
+
+        function updateBuffUI() {
+            const bX2 = document.getElementById('buff-x2');
+            const bSlow = document.getElementById('buff-slow');
+            const bShield = document.getElementById('buff-shield');
+            if(state.scoreMultiplierTimeLeft > 0) {
+                bX2.style.display = 'flex';
+                document.getElementById('buff-x2-time').innerText = Math.ceil(state.scoreMultiplierTimeLeft);
+            } else bX2.style.display = 'none';
+            if(state.bonusTimeLeft > 0) {
+                bSlow.style.display = 'flex';
+                document.getElementById('buff-slow-time').innerText = Math.ceil(state.bonusTimeLeft);
+            } else bSlow.style.display = 'none';
+            if(state.shieldTimeLeft > 0) {
+                bShield.style.display = 'flex';
+                document.getElementById('buff-shield-time').innerText = Math.ceil(state.shieldTimeLeft);
+            } else bShield.style.display = 'none';
         }
 
         function explode(x, y, color) {
@@ -426,32 +536,71 @@
         function drawShip(x, y) {
             ctx.save(); ctx.translate(x, y);
             if (state.shieldTimeLeft > 0) {
-                ctx.beginPath(); ctx.arc(0, 0, 70, 0, Math.PI*2);
-                ctx.strokeStyle = "#3b82f6"; ctx.lineWidth = 2; ctx.globalAlpha = 0.5; ctx.stroke();
+                ctx.beginPath(); ctx.arc(0, 5, 75, 0, Math.PI*2);
+                ctx.strokeStyle = "#60a5fa"; ctx.lineWidth = 2; ctx.globalAlpha = 0.4 + Math.sin(Date.now()/100)*0.2; ctx.stroke(); ctx.globalAlpha = 1;
             }
-            ctx.fillStyle = "#ef4444"; ctx.beginPath(); ctx.moveTo(0, -40); ctx.lineTo(30, 20); ctx.lineTo(-30, 20); ctx.closePath(); ctx.fill();
+            ctx.fillStyle = "#ef4444"; ctx.globalAlpha = 0.6;
+            ctx.beginPath(); ctx.moveTo(-12, 20); ctx.lineTo(0, 45 + Math.random()*15); ctx.lineTo(12, 20); ctx.fill();
+            ctx.fillStyle = "#1e293b"; ctx.strokeStyle = "#94a3b8"; ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(0, -50); ctx.lineTo(18, -12); ctx.lineTo(40, 18); ctx.lineTo(12, 12); ctx.lineTo(15, 28); ctx.lineTo(-15, 28); ctx.lineTo(-12, 12); ctx.lineTo(-40, 18); ctx.lineTo(-18, -12); ctx.closePath();
+            ctx.fill(); ctx.stroke();
+            ctx.fillStyle = "#60a5fa"; ctx.shadowBlur = 10; ctx.shadowColor = "#3b82f6"; ctx.beginPath(); ctx.ellipse(0, -12, 7, 14, 0, 0, Math.PI*2); ctx.fill();
+            ctx.restore();
+        }
+
+        function drawMeteor(w) {
+            ctx.save(); ctx.translate(w.x, w.y); ctx.rotate(w.rotation);
+            ctx.fillStyle = "#0f172a"; ctx.strokeStyle = w.color; ctx.lineWidth = 2;
+            ctx.beginPath();
+            for(let i=0; i<6; i++) {
+                const angle = (i * Math.PI) / 3;
+                const r = w.size * (0.8 + Math.random()*0.1);
+                const x = r * Math.cos(angle); const y = r * Math.sin(angle);
+                if(i===0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            }
+            ctx.closePath(); ctx.fill(); ctx.stroke();
+            ctx.restore();
+            ctx.save(); ctx.translate(w.x, w.y);
+            ctx.fillStyle = "white"; ctx.font = "bold 14px monospace"; ctx.textAlign = "center";
+            ctx.shadowBlur = 5; ctx.shadowColor = "black";
+            ctx.fillText(w.text, 0, 5);
             ctx.restore();
         }
 
         function draw() {
             ctx.save(); if(state.screenShake > 0) ctx.translate((Math.random()-0.5)*state.screenShake, (Math.random()-0.5)*state.screenShake);
             ctx.clearRect(0,0,config.width,config.height);
-            state.stars.forEach(s => { ctx.fillStyle=s.c; ctx.fillRect(s.x, s.y, s.s, s.s); s.y += s.v; if(s.y > config.height) s.y = 0; });
+            state.stars.forEach(s => { ctx.fillStyle=s.c; ctx.beginPath(); ctx.arc(s.x, s.y, s.s, 0, Math.PI*2); ctx.fill(); });
             if(state.laser) {
-                ctx.strokeStyle=state.laser.c; ctx.lineWidth=3*state.laser.a; ctx.globalAlpha = state.laser.a;
+                ctx.strokeStyle=state.laser.c; ctx.lineWidth=5*state.laser.a; ctx.globalAlpha = state.laser.a;
                 ctx.beginPath(); ctx.moveTo(state.laser.x1, state.laser.y1); ctx.lineTo(state.laser.x2, state.laser.y2); ctx.stroke();
-                state.laser.a -= 0.1; if(state.laser.a <= 0) state.laser = null;
             }
-            ctx.globalAlpha = 1; 
-            state.words.forEach(w => {
-                ctx.fillStyle = w.color; ctx.font = "bold 16px Kanit"; ctx.textAlign = "center";
-                ctx.fillText(w.text, w.x, w.y);
-            });
-            state.particles.forEach((p, i) => { 
-                ctx.globalAlpha=p.l; ctx.fillStyle=p.c; ctx.fillRect(p.x, p.y, p.s, p.s);
-                p.x += p.vx; p.y += p.vy; p.l -= 0.02; if(p.l <= 0) state.particles.splice(i, 1);
-            });
+            ctx.globalAlpha = 1; state.words.forEach(drawMeteor);
+            if(state.specialMeteor) {
+                const m = state.specialMeteor; ctx.save(); ctx.translate(m.x, m.y);
+                let sIcon = m.type==='heal' ? '🛠️' : (m.type==='combo' ? '💎' : '🔥');
+                ctx.shadowBlur = 25; ctx.shadowColor = m.color;
+                ctx.fillStyle="#0f172a"; ctx.strokeStyle=m.color; ctx.lineWidth=4;
+                ctx.beginPath();
+                for(let i=0; i<8; i++) {
+                    const angle = (i * Math.PI) / 4;
+                    const x = (m.size/2) * Math.cos(angle); const y = (m.size/2) * Math.sin(angle);
+                    if(i===0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.closePath(); ctx.fill(); ctx.stroke();
+                ctx.shadowBlur = 0; ctx.fillStyle="white"; ctx.font="36px Arial"; ctx.textAlign="center"; ctx.fillText(sIcon, 0, 14);
+                ctx.fillStyle = "#1e293b"; ctx.fillRect(-25, m.size/2 + 12, 50, 6);
+                ctx.fillStyle = m.color; ctx.fillRect(-25, m.size/2 + 12, (m.hp/60)*50, 6);
+                ctx.restore();
+            }
+            state.particles.forEach(p => { ctx.globalAlpha=p.l; ctx.fillStyle=p.c; ctx.fillRect(p.x, p.y, p.s, p.s); });
             ctx.globalAlpha=1; drawShip(state.shipX, config.height - 60);
+            if(state.currentInput) {
+                ctx.save(); ctx.translate(config.width/2, config.height - 120);
+                if(state.scoreMultiplierTimeLeft > 0) { ctx.fillStyle="#ef4444"; ctx.font="bold 16px Kanit"; ctx.textAlign="center"; ctx.fillText("X2 BONUS ACTIVE!", 0, -40); }
+                ctx.fillStyle="rgba(59, 130, 246, 0.5)"; ctx.font="900 32px monospace"; ctx.textAlign="center";
+                ctx.fillText(state.currentInput, 0, 0); ctx.strokeStyle="#ef4444"; ctx.lineWidth=1; ctx.strokeText(state.currentInput, 0, 0); ctx.restore();
+            }
             ctx.restore();
         }
 
@@ -464,31 +613,70 @@
         }
 
         async function endGame(title, subtitle) {
-            state.gameActive = false; clearInterval(state.timerInterval);
+            state.gameActive = false; bgMusic.pause(); clearInterval(state.timerInterval);
             document.getElementById('over-title').innerText = title;
+            document.getElementById('over-subtitle').innerText = subtitle;
             document.getElementById('final-score').innerText = state.score.toLocaleString();
+            
+            if(state.score >= config.winScore) {
+                document.getElementById('win-medal-container').classList.remove('hidden');
+                document.getElementById('over-title').style.color = '#fbbf24';
+            } else {
+                document.getElementById('win-medal-container').classList.add('hidden');
+                document.getElementById('over-title').style.color = '#ef4444';
+            }
+
             document.getElementById('game-over').classList.remove('hidden');
-            if(state.score >= config.winScore) document.getElementById('win-medal-container').classList.remove('hidden');
-
+            
             try {
-                // Insert score into Supabase 'leaderboard'
-                await fetchWithRetry(`${SUPABASE_URL}/rest/v1/leaderboard`, {
-                    method: 'POST', headers: HEADERS,
-                    body: JSON.stringify({ username: state.user, score: state.score })
+                // Save score to Supabase
+                await fetch(`${SUPABASE_URL}/rest/v1/scores`, {
+                    method: 'POST',
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`,
+                        'Content-Type': 'application/json',
+                        'Prefer': 'return=minimal'
+                    },
+                    body: JSON.stringify({
+                        username: state.user,
+                        score: state.score
+                    })
                 });
-
-                // Fetch new leaderboard
-                const res = await fetchWithRetry(`${SUPABASE_URL}/rest/v1/leaderboard?select=*&order=score.desc&limit=8`, { headers: HEADERS });
+                
+                // Fetch leaderboard from Supabase
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/scores?select=username,score&order=score.desc&limit=10`, {
+                    headers: {
+                        'apikey': SUPABASE_ANON_KEY,
+                        'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
+                    }
+                });
                 const data = await res.json();
-                const body = document.getElementById('leaderboard-body'); body.innerHTML = "";
-                data.forEach((entry, i) => {
-                    body.innerHTML += `
-                    <div class="flex justify-between items-center py-2 border-b border-slate-800 ${entry.username === state.user ? 'text-blue-400 bg-blue-500/10' : ''}">
-                        <span>${i+1}. ${entry.username}</span>
-                        <span class="text-blue-400 font-bold">${entry.score.toLocaleString()}</span>
-                    </div>`;
-                });
-            } catch(e) {}
+                const body = document.getElementById('leaderboard-body'); 
+                body.innerHTML = "";
+                
+                if (data && data.length > 0) {
+                    data.forEach((entry, i) => {
+                        const info = getRankInfo(i);
+                        body.innerHTML += `
+                        <div class="flex justify-between items-center py-2 border-b border-slate-800 ${entry.username === state.user ? 'text-blue-400 bg-blue-500/10 px-2' : ''}">
+                            <div class="flex flex-col">
+                                <span class="font-bold text-white">${i+1}. ${entry.username}</span>
+                                <span class="text-[9px] text-slate-500">${info.title}</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-blue-400 font-bold">${entry.score.toLocaleString()}</span>
+                                <span class="text-lg">${info.medal}</span>
+                            </div>
+                        </div>`;
+                    });
+                } else {
+                    body.innerHTML = "<p class='text-center py-4'>ไม่พบข้อมูล</p>";
+                }
+            } catch(e) { 
+                console.error('Error saving score or loading leaderboard:', e);
+                document.getElementById('leaderboard-body').innerHTML = "<p class='text-center py-4'>เกิดข้อผิดพลาดในการโหลดข้อมูล</p>";
+            }
         }
 
         function restartGame() { location.reload(); }
