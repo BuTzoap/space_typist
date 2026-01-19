@@ -328,7 +328,7 @@
 
         async function loadInitialLeaderboard() {
             try {
-                const res = await fetch(`${SUPABASE_URL}/rest/v1/scores?select=username,score&order=score.desc&limit=5`, {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/leaderboard?select=username,score&order=score.desc&limit=10`, {
                     headers: {
                         'apikey': SUPABASE_ANON_KEY,
                         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
@@ -630,7 +630,7 @@
             
             try {
                 // Save score to Supabase
-                await fetch(`${SUPABASE_URL}/rest/v1/scores`, {
+                await fetch(`${SUPABASE_URL}/rest/v1/leaderboard`, {
                     method: 'POST',
                     headers: {
                         'apikey': SUPABASE_ANON_KEY,
@@ -645,7 +645,7 @@
                 });
                 
                 // Fetch leaderboard from Supabase
-                const res = await fetch(`${SUPABASE_URL}/rest/v1/scores?select=username,score&order=score.desc&limit=10`, {
+                const res = await fetch(`${SUPABASE_URL}/rest/v1/leaderboard?select=username,score&order=score.desc&limit=10`, {
                     headers: {
                         'apikey': SUPABASE_ANON_KEY,
                         'Authorization': `Bearer ${SUPABASE_ANON_KEY}`
