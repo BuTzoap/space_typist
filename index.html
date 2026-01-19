@@ -312,8 +312,30 @@
                 checkWord();
             });
 
+            // ป้องกันการ copy, paste, cut
+            kbHandler.addEventListener('paste', (e) => {
+                e.preventDefault();
+                return false;
+            });
+            kbHandler.addEventListener('copy', (e) => {
+                e.preventDefault();
+                return false;
+            });
+            kbHandler.addEventListener('cut', (e) => {
+                e.preventDefault();
+                return false;
+            });
+
+            // ป้องกัน Ctrl+V, Ctrl+C, Ctrl+X
             window.addEventListener('keydown', (e) => { 
                 if(!state.gameActive) return;
+                
+                // ป้องกันการใช้ Ctrl/Cmd + C, V, X
+                if ((e.ctrlKey || e.metaKey) && ['c', 'v', 'x'].includes(e.key.toLowerCase())) {
+                    e.preventDefault();
+                    return false;
+                }
+                
                 kbHandler.focus(); 
                 if(e.code === 'Enter') {
                     state.currentInput = ""; kbHandler.value = "";
